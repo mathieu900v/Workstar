@@ -8,7 +8,7 @@ const dev = process.env.REACT_APP_ENV === 'development';
 
 // If you want to change the language, remember to also change the
 // locale data and the messages in the app.js file.
-const locale = 'en';
+const locale = 'fr';
 const i18n = {
   /*
     0: Sunday
@@ -84,25 +84,25 @@ const sentryDsn = process.env.REACT_APP_SENTRY_DSN;
 const usingSSL = process.env.REACT_APP_SHARETRIBE_USING_SSL === 'true';
 
 // Address information is used in SEO schema for Organization (http://schema.org/PostalAddress)
-const addressCountry = 'FI';
-const addressRegion = 'Helsinki';
-const postalCode = '00100';
-const streetAddress = 'Bulevardi 14';
+const addressCountry = 'FR';
+const addressRegion = 'Paris';
+const postalCode = '75000';
+const streetAddress = '1 rue de la Paix';
 
 // Canonical root url is needed in social media sharing and SEO optimization purposes.
 const canonicalRootURL = process.env.REACT_APP_CANONICAL_ROOT_URL;
 
 // Site title is needed in meta tags (bots and social media sharing reads those)
-const siteTitle = 'Saunatime';
+const siteTitle = 'Workstar';
 
 // Twitter handle is needed in meta tags (twitter:site). Start it with '@' character
-const siteTwitterHandle = '@sharetribe';
+const siteTwitterHandle = '@workstar';
 
 // Instagram page is used in SEO schema (http://schema.org/Organization)
 const siteInstagramPage = null;
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
-const siteFacebookPage = 'https://www.facebook.com/Sharetribe/';
+const siteFacebookPage = 'https://www.facebook.com/workstar/';
 
 // Social logins & SSO
 
@@ -129,7 +129,7 @@ const maps = {
 
     // Distance in meters for calculating the bounding box around the
     // current location.
-    currentLocationBoundsDistance: 1000,
+    currentLocationBoundsDistance: 10000,
 
     // Example location can be edited in the
     // `default-location-searches.js` file.

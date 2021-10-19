@@ -17,9 +17,10 @@ import configureStore from './store';
 import routeConfiguration from './routeConfiguration';
 import Routes from './Routes';
 import config from './config';
+import messagesInLocale from './translations/fr.json';
 
 // Flex template application uses English translations as default.
-import defaultMessages from './translations/en.json';
+import defaultMessages from './translations/fr.json';
 
 // If you want to change the language, change the imports to match the wanted locale:
 //   1) Change the language in the config.js file!
@@ -40,7 +41,6 @@ import defaultMessages from './translations/en.json';
 // If you are using a non-english locale, point `messagesInLocale` to correct .json file.
 // Remove "const messagesInLocale" and add import for the correct locale:
 // import messagesInLocale from './translations/fr.json';
-const messagesInLocale = {};
 
 // If translation key is missing from `messagesInLocale` (e.g. fr.json),
 // corresponding key will be added to messages from `defaultMessages` (en.json)
