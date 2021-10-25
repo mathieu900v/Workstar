@@ -93,6 +93,27 @@ export const filters = [
     },
   },
   {
+    id: 'finishings',
+    label: 'Finishings',
+    type: 'SelectSingleFilter',
+    group: 'secondary',
+    queryParamNames: ['pub_finishings'],
+    config: {
+      // "key" is the option you see in Flex Console.
+      // "label" is set here for the UI only.
+      // Note: label is not added through the translation files
+      // to make filter customizations a bit easier.
+      options: [
+        { key: 'laquee', label: 'Laquée' },
+        { key: 'satinee', label: 'Satinée' },
+        { key: 'coqoeuf', label: 'Coquille d\'oeuf' },
+        { key: 'lustre', label: 'Lustrée douce' },
+        { key: 'veloutee', label: 'Veloutée' },
+        { key: 'mat', label: 'Mat' },
+      ],
+    },
+  },
+  {
     id: 'amenities',
     label: 'Amenities',
     type: 'SelectMultipleFilter',

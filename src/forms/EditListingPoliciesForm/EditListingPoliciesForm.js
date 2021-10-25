@@ -27,11 +27,17 @@ export const EditListingPoliciesFormComponent = props => (
         fetchErrors,
       } = formRenderProps;
 
-      const rulesLabelMessage = intl.formatMessage({
-        id: 'EditListingPoliciesForm.rulesLabel',
+      const colorsLabelMessage = intl.formatMessage({
+        id: 'EditListingPoliciesForm.colorsLabel',
       });
-      const rulesPlaceholderMessage = intl.formatMessage({
-        id: 'EditListingPoliciesForm.rulesPlaceholder',
+      const colorsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingPoliciesForm.colorsPlaceholder',
+      });
+      const finishingsLabelMessage = intl.formatMessage({
+        id: 'EditListingPoliciesForm.finishingsLabel',
+      });
+      const finishingsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingPoliciesForm.finishingsPlaceholder',
       });
 
       const { updateListingError, showListingsError } = fetchErrors || {};
@@ -57,12 +63,21 @@ export const EditListingPoliciesFormComponent = props => (
           {errorMessageShowListing}
 
           <FieldTextInput
-            id="rules"
-            name="rules"
+            id="colors"
+            name="colors"
             className={css.policy}
             type="textarea"
-            label={rulesLabelMessage}
-            placeholder={rulesPlaceholderMessage}
+            label={colorsLabelMessage}
+            placeholder={colorsPlaceholderMessage}
+          />
+
+          <FieldTextInput
+            id="finishings"
+            name="finishings"
+            className={css.policy}
+            type="textarea"
+            label={finishingsLabelMessage}
+            placeholder={finishingsPlaceholderMessage}
           />
 
           <Button
