@@ -6,7 +6,7 @@ import {
 } from './SearchPage.helpers.js';
 
 const urlParams = {
-  pub_category: 'smoke',
+  pub_category: 'peinture',
   pub_amenities: 'towels,bathroom',
 };
 
@@ -18,7 +18,7 @@ const filters = [
     group: 'secondary',
     queryParamNames: ['pub_category'],
     config: {
-      options: [{ key: 'smoke', label: 'Smoke' }, { key: 'wooden', label: 'Wood' }],
+      options: [{ key: 'peinture', label: 'Peinture' }, { key: 'wooden', label: 'Wood' }],
     },
   },
   {
@@ -28,7 +28,7 @@ const filters = [
     group: 'secondary',
     queryParamNames: ['pub_param1', 'pub_param1'],
     config: {
-      options: [{ key: 'smoke', label: 'Smoke' }, { key: 'wooden', label: 'Wood' }],
+      options: [{ key: 'peinture', label: 'Peinture' }, { key: 'wooden', label: 'Wood' }],
     },
   },
   {
@@ -70,8 +70,8 @@ const sortConfig = {
 describe('SearchPage.helpers', () => {
   describe('validURLParamForExtendedData', () => {
     it('returns a valid parameter', () => {
-      const validParam = validURLParamForExtendedData('pub_category', 'smoke', filters, sortConfig);
-      expect(validParam).toEqual({ pub_category: 'smoke' });
+      const validParam = validURLParamForExtendedData('pub_category', 'peinture', filters, sortConfig);
+      expect(validParam).toEqual({ pub_category: 'peinture' });
     });
 
     it('takes empty params', () => {
@@ -107,15 +107,15 @@ describe('SearchPage.helpers', () => {
     });
 
     it('drops an invalid filter param value', () => {
-      const params = { pub_category: 'smoke', pub_amenities: 'invalid1,invalid2' };
+      const params = { pub_category: 'peinture', pub_amenities: 'invalid1,invalid2' };
       const validParams = validFilterParams(params, filters, sortConfig);
-      expect(validParams).toEqual({ pub_category: 'smoke' });
+      expect(validParams).toEqual({ pub_category: 'peinture' });
     });
 
     it('drops non-filter params', () => {
-      const params = { pub_category: 'smoke', other_param: 'somevalue' };
+      const params = { pub_category: 'peinture', other_param: 'somevalue' };
       const validParams = validFilterParams(params, filters, sortConfig);
-      expect(validParams).toEqual({ pub_category: 'smoke' });
+      expect(validParams).toEqual({ pub_category: 'peinture' });
     });
   });
 
@@ -131,13 +131,13 @@ describe('SearchPage.helpers', () => {
     });
 
     it('drops an invalid filter param value', () => {
-      const params = { pub_category: 'smoke', pub_amenities: 'invalid1,invalid2' };
+      const params = { pub_category: 'peinture', pub_amenities: 'invalid1,invalid2' };
       const validParams = validURLParamsForExtendedData(params, filters, sortConfig);
-      expect(validParams).toEqual({ pub_category: 'smoke' });
+      expect(validParams).toEqual({ pub_category: 'peinture' });
     });
 
     it('returns non-filter params', () => {
-      const params = { pub_category: 'smoke', other_param: 'somevalue' };
+      const params = { pub_category: 'peinture', other_param: 'somevalue' };
       const validParams = validURLParamsForExtendedData(params, filters, sortConfig);
       expect(validParams).toEqual(params);
     });
@@ -160,15 +160,15 @@ describe('SearchPage.helpers', () => {
     });
 
     it('drops an invalid filter param value', () => {
-      const params = { pub_category: 'smoke', pub_amenities: 'invalid1,invalid2' };
+      const params = { pub_category: 'peinture', pub_amenities: 'invalid1,invalid2' };
       const validParams = pickSearchParamsOnly(params, filters, sortConfig);
-      expect(validParams).toEqual({ pub_category: 'smoke' });
+      expect(validParams).toEqual({ pub_category: 'peinture' });
     });
 
     it('drops non-search params', () => {
-      const params = { pub_category: 'smoke', other_param: 'somevalue' };
+      const params = { pub_category: 'peinture', other_param: 'somevalue' };
       const validParams = pickSearchParamsOnly(params, filters, sortConfig);
-      expect(validParams).toEqual({ pub_category: 'smoke' });
+      expect(validParams).toEqual({ pub_category: 'peinture' });
     });
 
     it('returns sort param', () => {

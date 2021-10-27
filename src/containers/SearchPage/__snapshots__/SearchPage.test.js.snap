@@ -67,20 +67,8 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             "config": Object {
               "options": Array [
                 Object {
-                  "key": "smoke",
-                  "label": "Smoke",
-                },
-                Object {
-                  "key": "electric",
-                  "label": "Electric",
-                },
-                Object {
-                  "key": "wood",
-                  "label": "Wood",
-                },
-                Object {
-                  "key": "other",
-                  "label": "Other",
+                  "key": "peinture",
+                  "label": "Peinture",
                 },
               ],
             },

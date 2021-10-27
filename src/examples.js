@@ -79,7 +79,6 @@ import * as EditListingDescriptionForm from './forms/EditListingDescriptionForm/
 import * as EditListingFeaturesForm from './forms/EditListingFeaturesForm/EditListingFeaturesForm.example';
 import * as EditListingLocationForm from './forms/EditListingLocationForm/EditListingLocationForm.example';
 import * as EditListingPhotosForm from './forms/EditListingPhotosForm/EditListingPhotosForm.example';
-import * as EditListingPoliciesForm from './forms/EditListingPoliciesForm/EditListingPoliciesForm.example';
 import * as EditListingPricingForm from './forms/EditListingPricingForm/EditListingPricingForm.example';
 import * as EmailVerificationForm from './forms/EmailVerificationForm/EmailVerificationForm.example';
 import * as EnquiryForm from './forms/EnquiryForm/EnquiryForm.example';
@@ -112,7 +111,6 @@ export {
   EditListingFeaturesForm,
   EditListingLocationForm,
   EditListingPhotosForm,
-  EditListingPoliciesForm,
   EditListingPricingForm,
   EmailVerificationForm,
   EnquiryForm,

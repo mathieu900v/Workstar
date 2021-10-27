@@ -61,8 +61,7 @@ class EditListingLocationPanel extends Component {
     const classes = classNames(rootClassName || css.root, className);
     const currentListing = ensureOwnListing(listing);
 
-    const isPublished =
-      currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
+    const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
     const panelTitle = isPublished ? (
       <FormattedMessage
         id="EditListingLocationPanel.title"
