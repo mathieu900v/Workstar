@@ -8,9 +8,13 @@ import { ensureListing } from '../../util/data';
 import { EditListingFeaturesForm } from '../../forms';
 import { ListingLink } from '../../components';
 
+import { types as sdkTypes } from '../../util/sdkLoader';
+import config from '../../config';
+
 import css from './EditListingFeaturesPanel.module.css';
 
 const FEATURES_NAME = 'amenities';
+const { Money } = sdkTypes;
 
 const EditListingFeaturesPanel = props => {
   const {
@@ -29,7 +33,15 @@ const EditListingFeaturesPanel = props => {
 
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
+
+  //Money object for distanceFees
   const { publicData } = currentListing.attributes;
+
+  const distanceFees = 
+  publicData && publicData.distanceFees ? publicData.distanceFees : null;
+
+  const distanceFeesAsMoney = 
+  distanceFees ? new Money(distanceFees.amount, distanceFees.currency) : null;
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -42,20 +54,21 @@ const EditListingFeaturesPanel = props => {
   );
 
   const amenities = publicData && publicData.amenities;
-  const initialValues = { amenities };
-
-  return (
-    <div className={classes}>
-      <h1 className={css.title}>{panelTitle}</h1>
-      <EditListingFeaturesForm
+  const initialValues = { amenities, distanceFees: distanceFeesAsMoney };
+  const distanceFeesAsMoneyCurrencyValid = distanceFeesAsMoney instanceof Money ? distanceFeesAsMoney.currency === config.currency : true;
+  const form = distanceFeesAsMoneyCurrencyValid ? (
+    <EditListingFeaturesForm
         className={css.form}
         name={FEATURES_NAME}
         initialValues={initialValues}
         onSubmit={values => {
           const { amenities = [] } = values;
+          
+          //Pricing for km
+          const { distanceFees = null } = values;
 
           const updatedValues = {
-            publicData: { amenities },
+            publicData: { amenities, distanceFees: { amount: distanceFees.amount, currency: distanceFees.currency }},
           };
           onSubmit(updatedValues);
         }}
@@ -67,6 +80,16 @@ const EditListingFeaturesPanel = props => {
         updateInProgress={updateInProgress}
         fetchErrors={errors}
       />
+  ) : (
+    <div className={css.priceCurrencyInvalid}>
+      <FormattedMessage id="EditListingPricingPanel.listingPriceCurrencyInvalid" />
+    </div>
+  );
+
+  return (
+    <div className={classes}>
+      <h1 className={css.title}>{panelTitle}</h1>
+      {form}
     </div>
   );
 };

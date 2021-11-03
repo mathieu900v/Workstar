@@ -1,13 +1,14 @@
 import React from 'react';
 import { bool, func, shape, string } from 'prop-types';
 import classNames from 'classnames';
+import { compose } from 'redux';
 import { Form as FinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
-import { FormattedMessage } from '../../util/reactIntl';
+import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
 import { findOptionsForSelectFilter } from '../../util/search';
 import { propTypes } from '../../util/types';
 import config from '../../config';
-import { Button, FieldCheckboxGroup, Form } from '../../components';
+import { Button, FieldCheckboxGroup, FieldCurrencyInput, Form } from '../../components';
 
 import css from './EditListingFeaturesForm.module.css';
 
@@ -22,6 +23,7 @@ const EditListingFeaturesFormComponent = props => (
         rootClassName,
         className,
         name,
+        intl,
         handleSubmit,
         pristine,
         saveActionMsg,
@@ -49,6 +51,14 @@ const EditListingFeaturesFormComponent = props => (
         </p>
       ) : null;
 
+      const distanceFeesMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.distanceFeesMessage',
+      });
+
+      const distanceFeesPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingFeaturesForm.distanceFeesPlaceholderMessage',
+      });
+
       const options = findOptionsForSelectFilter('amenities', filterConfig);
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -56,6 +66,16 @@ const EditListingFeaturesFormComponent = props => (
           {errorMessageShowListing}
 
           <FieldCheckboxGroup className={css.features} id={name} name={name} options={options} />
+
+          <FieldCurrencyInput
+            id="distanceFees"
+            name="distanceFees"
+            className={css.distanceFeesInput}
+            autoFocus
+            label={distanceFeesMessage}
+            placeholder={distanceFeesPlaceholderMessage}
+            currencyConfig={config.currencyConfig}
+          />
 
           <Button
             className={css.submitButton}
@@ -80,6 +100,7 @@ EditListingFeaturesFormComponent.defaultProps = {
 };
 
 EditListingFeaturesFormComponent.propTypes = {
+  intl: intlShape.isRequired,
   rootClassName: string,
   className: string,
   name: string.isRequired,
@@ -98,4 +119,4 @@ EditListingFeaturesFormComponent.propTypes = {
 
 const EditListingFeaturesForm = EditListingFeaturesFormComponent;
 
-export default EditListingFeaturesForm;
+export default compose(injectIntl)(EditListingFeaturesForm);
